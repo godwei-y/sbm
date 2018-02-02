@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="content-type" content="text/html";charset="UTF-8">
+    <title>Hello world</title>
+</head>
+
+<body>
+<table th:border="1" data-th-bgcolor="yellow" align="center" width="200" hidden="100" cellpadding="200" data-th-marginheight="300">
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>age</td>
+    </tr>
+    <tr th:each="student:${students}">
+        <td th:text="${student.id}">id</td>
+        <td th:text="${student.name}">name</td>
+        <td th:text="${student.age}">age</td>
+    </tr>
+
+</table>
+<form action="/index.html" method="get" onsubmit="true" style="text-align:center">
+    <input type="submit" value="安全退出"/>
+</form>
+</body>
+</html>

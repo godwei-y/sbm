@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!--配置逆向工程，自动生成mapper.xml,mapper.java,实体类-->
+<generatorConfiguration>
+    <classPathEntry location="C:Users\..\m2\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar"/>
+    <context id="MySql" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/test1" userId="root"
+                        password="">
+
+        </jdbcConnection>
+        <!--mysql类型与java不匹配时，应进行的配置-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+        <!--实体类生成的位置-->
+        <javaModelGenerator targetPackage="test.Dao.Po"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--Mapper.xml文件位置，.表示当前路径-->
+        <sqlMapGenerator targetPackage="mapper"
+        targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!--Mapper接口文件位置-->
+        <javaClientGenerator targetPackage="test.Dao.Mapper"
+        type="XMLMAPPER" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--对应mysql数据库的表名，默认生成哪些SQL-->
+        <table schma="" tableName="student"
+        enableCountByExample="false"
+        enableUpdateByExample="false"
+        enableDeleteByExample="false"
+        enableSelectByExample="false"
+        />
+    </context>
+</generatorConfiguration>

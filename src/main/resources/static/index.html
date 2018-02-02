@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<c:set var="ctx" value="<%request.getContextPath()%>" xmlns:c="http://www.springframework.org/schema/beans"/>
+<html xmlns:th="www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+
+<body>
+<h1>welcome</h1>
+<form action="/test/finStudentByName" method="get" onsubmit="true">
+    根据姓名查：<input type="text" name="name" id="name" th:value="${finStudentByNameErrMsg}">
+    <input type="submit" value="提交">
+
+</form>
+<br>
+<form action="/test/finStudentById" method="get" onsubmit="true">
+    根据id查：<input type="text" name="id" id="id" th:value="${finStudentByIdErrMsg}">
+    <input type="submit" value="提交">
+</form>
+<br>
+<form action="/test/deleteById" method="get" onsubmit="true">
+    根据id删：<input type="text" name="id"  th:value="${deleteByIdErrMsg}">
+    <input type="submit" value="提交">
+</form>
+<br>
+<form action="/test/update" method="get" onsubmit="true">
+    修改：id<input type="text" name="id"  th:value="${updateErrMsg}">
+    name<input type="text" name="name" value="">
+    age<input type="text" name="age" value="">
+    <input type="submit" value="提交">
+</form>
+<br>
+<form action="/test/addStudent" method="get" onsubmit="true">
+    新增：id<input type="text" name="id"  th:value="${addStudentErrMsg}">
+    name<input type="text" name="name" value="">
+    age<input type="text" name="age" value="">
+    <input type="submit" value="提交">
+</form>
+<br>
+<form action="/test/finStudentAll" method="get" onsubmit="true">
+    <input type="submit" value="查询所有记录">
+</form>
+<br>
+<form action="/test/queryPage" method="get" onsubmit="true">
+    <input type="submit" value="分页查询所有记录">
+</form>
+<br>
+<form action="/test/upload" method="post" enctype="multipart/form-data">
+    <p>文件：<input type="file" name="file"/></p>
+    <p><input type="submit" value="单文件或图片上传"></p>
+</form>
+<br>
+<form action="/test/uploads" method="post" enctype="multipart/form-data">
+    <p>文件1：<input type="file" name="file"/></p>
+    <p>文件2：<input type="file" name="file"/></p>
+    <p>文件3：<input type="file" name="file"/></p>
+    <p><input type="submit" value="多文件或图片上传"></p>
+</form>
+<br>
+<form action="/test/download" method="post">
+    <input type="text" id="file" name="file" value="" placeholder="请输入要下载的文件名">
+    <input type="submit" value="下载文件">
+</form>
+</body>
+</html>

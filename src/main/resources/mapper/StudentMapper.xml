@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+         <!-- ==================代理方式=================
+  由mapper标签开始，由/mapper结束，可以把它想成一个空间，是映射文件
+  属性namespace：空间名，主要在代理中使用。这个namespace是唯一的。
+  这里把mapper标签和接口联系在一起了，namespace=写接口路径，映射文件要和接口在同一目录下
+   -->
+         <mapper namespace="test.Dao.Mapper.StudentMapper">
+        <!-- =============映射关系标签=============
+     属性type:写po类的包名类名，由于之前定义了po类的别名，这里就写这个别名
+     属性id：是这个映射标签的唯一标识
+     id标签是查询结果集中的唯一标识
+    属性column：查询出来的列名
+     属性property：是po类里所指定的列名
+    通常会在原列名后面加下划线，这是固定的，这里就是id后面_
+      -->
+        <resultMap type="test.Dao.Po.Student" id="BaseResultMap">
+            <result column="id" property="id" jdbcType="VARCHAR"/>
+            <result column="name" property="name" jdbcType="VARCHAR"/>
+            <result column="age" property="age" jdbcType="INTEGER"/>
+        </resultMap>
+
+
+<!--
+    <insert id="insert" parameterType="test.Dao.Po.Student">
+        insert into student(id,name,age)
+        values (#{id,jdbcType=VALCHAR},#{name,jdbcType=VARCHAR},#{age,jdbcType=INTEGER})
+    </insert>
+-->
+
+    <select id="selectStudentById" parameterType="String" resultType="Student">
+        select * from student where id=#{id}
+    </select>
+    <select id="selectStudentByName" parameterType="String" resultType="Student">
+        select * from student where name=#{name}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from student
+    </select>
+
+    <select id="selectAllStudent" resultType="test.Dao.Po.Student">
+        select * from student order by id
+    </select>
+
+    <update id="updateStudent" parameterType="Student">
+        update student set name=#{name},age=#{age} where id=#{id}
+    </update>
+
+    <delete id="deleteStudentById" parameterType="String">
+        delete from student where id =#{id}
+    </delete>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
